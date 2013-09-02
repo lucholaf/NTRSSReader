@@ -23,7 +23,6 @@
 	RootViewController *rootController = [[RootViewController alloc] init];
 	rootController.context = [self managedObjectContext];
 	[navController_ pushViewController:rootController animated:NO];
-	[rootController release];
 	
 	[self.window addSubview:navController_.view];
 	
@@ -136,7 +135,7 @@
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString *filePath = [documentsDirectory stringByAppendingPathComponent:@"NTRSSReader.sqlite"];
-    NSURL *storeURL = [[[NSURL alloc] initFileURLWithPath:filePath] autorelease];
+    NSURL *storeURL = [[NSURL alloc] initFileURLWithPath:filePath];
 
     NSError *error = nil;
     persistentStoreCoordinator_ = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
@@ -163,16 +162,6 @@
 }
 
 
-- (void)dealloc {
-	[navController_ release];
-    
-    [managedObjectContext_ release];
-    [managedObjectModel_ release];
-    [persistentStoreCoordinator_ release];
-    
-    [window_ release];
-    [super dealloc];
-}
 
 
 @end

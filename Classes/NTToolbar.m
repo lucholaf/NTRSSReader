@@ -59,8 +59,7 @@
 	if (success) {
 		NSString *newDateString = [outputFormatter stringFromDate:[NSDate date]];		
 		
-		[lastUpdateTime release];
-		lastUpdateTime = [[NSString stringWithFormat:@"Updated %@", newDateString] retain];
+		lastUpdateTime = [NSString stringWithFormat:@"Updated %@", newDateString];
 	}
 	
 	label.text = lastUpdateTime;
@@ -85,23 +84,13 @@
 }
 
 - (NSArray *)items {
-	UIBarButtonItem *space1 = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil] autorelease];
-	UIBarButtonItem *space2 = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil] autorelease];
-	UIBarButtonItem *refresh = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:delegate action:@selector(activityStarted)] autorelease];
-	UIBarButtonItem *titleView = [[[UIBarButtonItem alloc] initWithCustomView:toolbarView] autorelease];
+	UIBarButtonItem *space1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+	UIBarButtonItem *space2 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+	UIBarButtonItem *refresh = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:delegate action:@selector(activityStarted)];
+	UIBarButtonItem *titleView = [[UIBarButtonItem alloc] initWithCustomView:toolbarView];
 	
 	return [NSArray arrayWithObjects:refresh, space1, titleView, space2, nil];	
 }
 
-- (void)dealloc {
-	[outputFormatter release];
-	[label release];
-	[activityLabel release];
-	[toolbarView release];
-	[activity release];
-	[lastUpdateTime release];
-	
-	[super dealloc];
-}
 
 @end

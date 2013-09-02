@@ -18,7 +18,7 @@
 	self = [super init];
 	if (self) {
 		delegate = aDelegate;
-		url = [aUrl retain];
+		url = aUrl;
         
         [ASIHTTPRequest setDefaultCache:[ASIDownloadCache sharedCache]];
 	}
@@ -80,21 +80,13 @@
 			[delegate onItem:itemDict];
 		}
 		
-		[dateFormatter release];
 
 		[delegate finished:nil];
 	} else {
 		[delegate finished:error];
 	}
-	
-    [doc autorelease];		
 }
 
-- (void)dealloc {
-	[url release];
-	
-	[super dealloc];
-}
 
 
 @end

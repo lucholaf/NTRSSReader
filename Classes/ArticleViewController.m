@@ -14,7 +14,7 @@
 - (id)initWithUrl:(NSURL *)url {
 	self = [super init];
 	if (self) {
-		url_ = [url retain];
+		url_ = url;
 	}
 	
 	return self;
@@ -29,8 +29,6 @@
 	
 	self.view = webView; // this retains it, super dealloc/viewDidUnload will release it
 	
-	[webView release];
-	[url_ release];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -77,7 +75,6 @@
 - (void)dealloc {	
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 
-    [super dealloc];
 }
 
 

@@ -13,11 +13,11 @@
 {
 }
 
-@property (nonatomic, retain) NSDate * date;
-@property (nonatomic, retain) NSString * author;
-@property (nonatomic, retain) NSString * title;
-@property (nonatomic, retain) NSNumber * read;
-@property (nonatomic, retain) NSString * link;
+@property (nonatomic, strong) NSDate * date;
+@property (nonatomic, strong) NSString * author;
+@property (nonatomic, strong) NSString * title;
+@property (nonatomic, strong) NSNumber * read;
+@property (nonatomic, strong) NSString * link;
 
 @end
 

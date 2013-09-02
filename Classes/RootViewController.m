@@ -144,7 +144,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
 	cell.accessoryType = UITableViewCellAccessoryDetailDisclosureButton;
@@ -180,9 +180,6 @@
     self.fetchedResultsController = theFetchedResultsController;
     fetchedResultsController_.delegate = self;
 	
-    [sort release];
-    [fetchRequest release];
-    [theFetchedResultsController release];
 	
     return fetchedResultsController_;
 }
@@ -276,7 +273,6 @@
     // web views are kind of RAM consumers if reused so we prefer to alloc each time...
     UIViewController *detailViewController = [[ArticleViewController alloc] initWithUrl:[NSURL URLWithString:item.link]];	
     [self.navigationController pushViewController:detailViewController animated:YES];
-    [detailViewController release];    
 }
 
 //- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -296,18 +292,12 @@
     // Relinquish ownership of anything that can be recreated in viewDidLoad or on demand.
     // For example: self.myOutlet = nil;
 	
-	[toolbar_ release];
-	[loader_ release];
 }
 
 - (void)dealloc {
-	[itemFetchRequest_ release];
 	
-	self.context = nil;
 	self.fetchedResultsController.delegate = nil;
-	self.fetchedResultsController = nil;
 	
-    [super dealloc];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

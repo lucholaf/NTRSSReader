@@ -18,7 +18,6 @@
 	NSString *msg = [NSString stringWithFormat:@"%@. %@", [error localizedDescription], [error localizedFailureReason] ? [error localizedFailureReason] : @""];
 	UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:msg delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
 	[alertView show];
-	[alertView release];	
 }
 
 @end
