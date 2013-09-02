@@ -1,0 +1,1 @@
+A simple Core Data RSS reader. The purpose of this project is to explore Core Data API, ASIHTTRequest and GDataXml. It also use Conditional Get from HTTP in order to receive just the updated content.
